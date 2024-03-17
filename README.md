@@ -3,7 +3,7 @@
 
 ## Hugging Face Model & Demo
 This model is also hosted on Hugging Face Spaces, providing an easy-to-use, interactive demo. Visit the following link to test the model in your browser:
-[https://huggingface.co/spaces/hemant-bhambhu/Image_segmentation_unet_model](Image_segmentation_unet_model)
+[Image_segmentation_unet_model](https://huggingface.co/spaces/hemant-bhambhu/Image_segmentation_unet_model)
 
 
 ## Quick Start
