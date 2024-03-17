@@ -1,0 +1,15 @@
+import torch.nn as nn
+import torch.nn.functional as F
+import torch
+
+class DecoderBlock(nn.Module):
+    def __init__(self, in_channels, num_filters):
+        super().__init__()
+        self.conv_transpose = nn.ConvTranspose2d(in_channels, num_filters, kernel_size=3, stride=2, padding=1, output_padding=1)
+        self.conv1 = nn.Conv2d(num_filters*2, num_filters, 3, 1, 1)
+        self.conv2 = nn.Conv2d(num_filters, num_filters, 3, 1, 1)
+    def forward(self,x, prev_layer):
+        x = self.conv_transpose(x)
+        x = torch.cat([x, prev_layer], dim=1)
+        x = F.relu(self.conv2(F.relu(self.conv1(x))))
+        return x
