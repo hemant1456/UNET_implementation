@@ -21,7 +21,7 @@ class UNET(L.LightningModule):
         self.decoder_block4 = DecoderBlock(2 * initial_filters,  initial_filters) # 224x224x64
 
         self.classifer = nn.Conv2d(initial_filters, num_classes, 1, 1, 0)
-        self.accuracy= Accuracy(num_classes=3, task="multiclass")
+        self.accuracy= Accuracy(num_classes=num_classes, task="multiclass")
     def forward(self,x):
         x_1 = self.encoder_block1(x)
         x_2 = self.encoder_block2(x_1)
