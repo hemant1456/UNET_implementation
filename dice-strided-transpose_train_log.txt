@@ -1,0 +1,30 @@
+After epoch 0
+train loss:0.5275424718856812
+train accuracy:0.6400942802429199
+validation loss:0.4117125868797302
+validation accuracy:0.6997541189193726
+
+After epoch 1
+train loss:0.3493728041648865
+train accuracy:0.7585065960884094
+validation loss:0.3175528645515442
+validation accuracy:0.7860430479049683
+
+After epoch 2
+train loss:0.30296555161476135
+train accuracy:0.7953530550003052
+validation loss:0.29914024472236633
+validation accuracy:0.7985647320747375
+
+After epoch 3
+train loss:0.2788262367248535
+train accuracy:0.8146833777427673
+validation loss:0.2584201693534851
+validation accuracy:0.8344736099243164
+
+After epoch 4
+train loss:0.2567428648471832
+train accuracy:0.8313921689987183
+validation loss:0.2514583468437195
+validation accuracy:0.8344926834106445
+
