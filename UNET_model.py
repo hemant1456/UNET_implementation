@@ -9,7 +9,7 @@ from utils import dice_loss
 
 
 class UNET(L.LightningModule):
-    def __init__(self, in_channels, initial_filters, num_classes=3, loss_type="dice", pool_type="max_pool", size_increase="transpose"):
+    def __init__(self, in_channels, initial_filters, num_classes=3, loss_type="dice", pool_type="transpose", size_increase="transpose"):
         super().__init__()
         self.encoder_block1 = EncoderBlock(in_channels, initial_filters, to_pool=False, pool_type=pool_type)   # 224x224x64
         self.encoder_block2 = EncoderBlock(initial_filters, initial_filters*2,pool_type=pool_type)   # 112x112x128
@@ -57,15 +57,12 @@ class UNET(L.LightningModule):
         accuracy = self.accuracy(out, label)
         self.log(f"validation_{self.loss_type}_loss", loss, prog_bar=True, on_epoch=True, on_step=True)
         self.log("validation_accuracy", accuracy, prog_bar=True, on_epoch=True, on_step=True)
-    def on_tra(self):
-        with open(self.file_name, "a") as f:
-            f.write(f"After epoch {self.trainer.current_epoch}"+ "\n")
+            
     def on_train_epoch_end(self):
         with open(self.file_name,"a") as f:
+            f.write(f"After epoch {self.trainer.current_epoch}"+ "\n")
             f.write("train loss:" + str(self.trainer.callback_metrics[f"training_{self.loss_type}_loss"].item())+ "\n")
             f.write("train accuracy:" + str(self.trainer.callback_metrics["train_accuracy"].item())+ "\n")
-    def on_validation_epoch_end(self):
-        with open(self.file_name,"a") as f:
             f.write("validation loss:" + str(self.trainer.callback_metrics[f"validation_{self.loss_type}_loss"].item())+ "\n")
             f.write("validation accuracy:" + str(self.trainer.callback_metrics["validation_accuracy"].item())+ "\n\n")
     def configure_optimizers(self):
